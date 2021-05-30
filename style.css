@@ -1,0 +1,64 @@
+section {
+    border: 15px solid #4DD8F7;
+    border-radius: 16px;
+    background-color: #3AE0D2;
+    color: white;
+    padding: 20px;
+    margin: auto;
+    width: 50vw;
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 50px;
+    text-align: center;
+
+}
+
+form {
+    display: flex;
+    align-content: space-evenly;
+    flex-flow: column nowrap;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    margin: 15px;
+    max-width: 500px;
+    font-size: 12pt;
+    font-weight: bold;
+    color: white;
+    background-color: #459AF8;
+}
+
+button {
+    max-width: 100px;
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+    background-color: #75EAF0;
+}
+
+hr {
+    border-top: 15px solid #4DD8F7;
+    border-radius: 16px;
+}
+
+h1, h2 {
+    text-align: center;
+    font-size: 36pt;
+    font-weight: bold;
+    color: white;
+}
+
+body {
+    background-color: #5FB3D9;
+}
+
+th {
+    margin: 50px;
+    padding: 50px;
+    
+}
