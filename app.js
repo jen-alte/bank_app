@@ -1,9 +1,11 @@
 const routes = {
     '/login': { 
-      templateId: 'login' 
+      templateId: 'login', 
+      title: 'Login'
     },
     '/dashboard': { 
-      templateId: 'dashboard' 
+      templateId: 'dashboard',
+      title: 'Dashboard' 
     },
   };
   
@@ -14,6 +16,12 @@ const routes = {
     if (!route) {
       return navigate('/login');
     }
+
+    if (path=="/dashboard") {
+      console.log("Dashboard is shown")
+    }
+
+    window.document.title = route.title;
   
     console.log(`ROUTE: ${route}`);
   
@@ -23,14 +31,14 @@ const routes = {
     app.innerHTML = '';
     app.appendChild(view);
 
-    if (path=="/login") {
+   /* if (path=="/login") {
       window.document.title="Login";
     } else if (path=="/dashboard") {
       window.document.title="Dashboard";
       console.log("Dashboard is shown");
     } else {
       window.document.title="Error";
-    }
+    }*/
   }
   
   function navigate(path) {
