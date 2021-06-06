@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank App</title>
-    <script src="app.js" defer></script>
+    <script src="script2.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
@@ -15,9 +15,10 @@
       <h1>Bank App</h1>
       <section>
         <h2>Login<h2>
-        <form id="loginForm" action="/dashboard">
+        <form id="loginForm" action="javascript: login()">
           <label for="username">Username</label>
           <input id="username" name="user" type="text">
+          <div id="loginError" role="alert"></div>
           <button>Login</button>
         </form>
         <hr/>
@@ -39,11 +40,12 @@
     <template id="dashboard">
       <header>
         <h1>Bank App</h1>
-        <a href="/login" onclick="onLinkClick(event)">Logout</a>
+        <button onclick="logout()">Logout</button>
       </header>
       <section>
-        Balance: 100$
+        Balance: <span id="balance"></span><span id="currency"></span>
       </section>
+      <h2 id="description"></h2>
       <section>
         <h2>Transactions</h2>
         <table>
@@ -54,9 +56,17 @@
               <th>Amount</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="transactions"></tbody>
         </table>
       </section>
+    </template>
+
+    <template id="transaction">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     </template>
   </body>
 </html>
