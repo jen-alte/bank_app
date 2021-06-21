@@ -7,22 +7,26 @@
 				<div class="dogs-overlay">
 					<h1 class="display-2 text-xs-center">Choose your favorite cats</h1>
 					<v-card class="dog-card">
-						<v-img height="400px" :src="currentDogLink"></v-img>
+            <v-layout row wrap>
+						<v-img class="v-img" max-height="500px" max-width="500px" :src="currentDogLink"></v-img>
+            <v-img class="v-img" max-height="500px" max-width="500px" :src="newDogLink"></v-img>
+            </v-layout>
 						<v-card-actions>
-							<v-spacer></v-spacer>
-							<v-btn icon @click="addToFavorites" :disabled="isAlreadyInFavorites">
-								<v-icon>favorite</v-icon>
-							</v-btn>
-							<v-btn icon @click="loadNewDog">
+						<v-spacer></v-spacer>
+						<v-btn icon @click="addToFavorites" :disabled="isAlreadyInFavorites">
+						<v-icon>favorite</v-icon>
+						</v-btn>
+						<v-btn icon @click="loadNewDog">
 								<v-icon>forward</v-icon>
 							</v-btn>
 						</v-card-actions>
 					</v-card>
           <v-container grid-list-md fluid>
-            <v-layout wrap>
+            <v-layout row wrap>
               <v-flex xs6 sm4 md2 v-for="(pet, index) in favoriteDogs" :key="pet">
                 <v-card class="dog-card">
-                  <v-img height="150px" :src="pet"></v-img>
+                  <v-img max-height="75px" max-width="150px" :src="pet"></v-img>
+                   <v-img max-height="75px" max-width="150px" :src="pet"></v-img>
                   <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn icon @click="removeFromFavorites(index)">
@@ -46,6 +50,7 @@ export default {
   data() {
     return {
       currentDogLink: "",
+      newDogLink: "",
       favoriteDogs: []
     };
   },
@@ -65,6 +70,11 @@ export default {
           console.log(response)
           this.currentDogLink = response.data.url;
         })
+        axios
+        .get('https://dog.ceo/api/breeds/list/all')
+        .then((response) => {
+          console.log(response)
+          this.currentDogLink = response.data.message;})
         .catch((error) => {
           console.log(error);
         });
@@ -97,7 +107,7 @@ h1 {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: space-around;
 }
 @media (max-width: 768px) {
   .dogs-overlay {
@@ -107,5 +117,10 @@ h1 {
 .dog-card {
   width: 100%;
   max-width: 600px;
+}
+
+.v-img {
+  padding: 20px;
+  margin: 20px;
 }
 </style>
